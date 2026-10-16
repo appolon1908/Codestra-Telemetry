@@ -1,0 +1,48 @@
+{
+  "schema": "kyyow.platform-component.v1",
+  "repository": "appolon1908-hue/Codestra-Telemetry",
+  "component": "opentelemetry",
+  "authority": "telemetry-contract",
+  "exposure": "private",
+  "native_ports": [
+    4317,
+    4318,
+    8888,
+    8889,
+    13133
+  ],
+  "inputs": [
+    "kyyow-workloads:otlp"
+  ],
+  "outputs": [
+    "prometheus:metrics (scrape collector exporter on 8889)",
+    "loki:logs (OTLP HTTP directly)",
+    "tempo:traces (OTLP gRPC directly)"
+  ],
+  "controls": [
+    "declared sensitive attributes are deleted; transform/logs does not redact arbitrary log record bodies",
+    "producers must omit scraped page bodies, contacts, tokens and secrets; body sanitization remains an activation prerequisite",
+    "resource/codestra derives codestra.business from operator configuration and replaces tenant scope with aggregate",
+    "receivers require private networking and authenticated transport; collector has no business-system credentials"
+  ],
+  "identity": {
+    "authority": "appolon1908-hue/Keycloak",
+    "workload_identity_required": true,
+    "anonymous_admin_access": false
+  },
+  "secrets": {
+    "authority": "appolon1908-hue/Codestra-OpenBao",
+    "secrets_in_git": false,
+    "environment_plaintext_secrets": false
+  },
+  "operations": {
+    "middleware_is_sole_odoo_writer": true,
+    "grafana_read_only": true,
+    "superset_read_only": true
+  },
+  "activation": {
+    "source_contract_complete": true,
+    "runtime_evidence_complete": false,
+    "production_activation_authorized": false
+  }
+}
