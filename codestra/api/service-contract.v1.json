@@ -67,7 +67,7 @@
   ],
   "managementReadback": {
     "allowsMutation": false,
-    "controlApiOwner": "appolon1908-hue/Codestra-Telemetry",
+    "controlApiOwner": "ingtrader21-spec/Codestra-Telemetry",
     "exposesSecretValues": false,
     "healthOperationId": "health",
     "readinessOperationId": "readiness",
@@ -158,7 +158,7 @@
     "immutableImageRequired": true,
     "sourceRevisionEnvironment": "CODESTRA_OPENTELEMETRY_SOURCE_REVISION"
   },
-  "repository": "appolon1908-hue/Codestra-Telemetry",
+  "repository": "ingtrader21-spec/Codestra-Telemetry",
   "safety": {
     "anonymousManagementAccessAllowed": false,
     "callerControlledBusinessAllowed": false,
@@ -171,8 +171,8 @@
   },
   "schemaAuthority": {
     "path": "codestra/api/service-contract.schema.json",
-    "repository": "appolon1908-hue/Codestra-Telemetry",
-    "sourceRevision": "ed89242841ccab5b0ee0304da7ba21ba70cafc06",
+    "repository": "ingtrader21-spec/Codestra-Telemetry",
+    "sourceRevision": "3517fb3b9bb1077d92419a5c13c07d703ffbebf6",
     "version": "1.0.0"
   },
   "schemaVersion": "1.0.0",

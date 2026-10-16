@@ -4,7 +4,7 @@ This repository owns the **telemetry-ingress-normalization-redaction-routing-aut
 
 ## Communication rule
 
-OpenTelemetry Collector keeps its native API and protocol. The shared Codestra control plane in `appolon1908-hue/Codestra-Telemetry` performs only sanitized health, readiness, contract, topology, and immutable-release read-back. It never proxies native query bodies, ingestion, alert delivery, dashboard mutations, secret values, or credential issuance.
+OpenTelemetry Collector keeps its native API and protocol. The shared Codestra control plane in `ingtrader21-spec/Codestra-Telemetry` performs only sanitized health, readiness, contract, topology, and immutable-release read-back. It never proxies native query bodies, ingestion, alert delivery, dashboard mutations, secret values, or credential issuance.
 
 - Canonical hostname: `otel.codestra.media`
 - Native exposure: `internal_private`

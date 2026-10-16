@@ -61,7 +61,7 @@ jobs:
           schema_authority_revision = os.environ['EXPECTED_SCHEMA_AUTHORITY_REVISION']
           assert re.fullmatch(r'[0-9a-f]{40}', schema_authority_revision)
           assert contract['schemaAuthority'] == {
-              'repository': 'appolon1908-hue/Codestra-Telemetry',
+              'repository': 'ingtrader21-spec/Codestra-Telemetry',
               'path': 'codestra/api/service-contract.schema.json',
               'sourceRevision': schema_authority_revision,
               'version': '1.0.0',
@@ -86,7 +86,7 @@ jobs:
               assert operation['access'] == 'read_only'
               assert operation['responseBodyPolicy'] == 'discard'
           assert all(item['mutating'] is False for item in contract['integrations'])
-          assert contract['managementReadback']['controlApiOwner'] == 'appolon1908-hue/Codestra-Telemetry'
+          assert contract['managementReadback']['controlApiOwner'] == 'ingtrader21-spec/Codestra-Telemetry'
           assert contract['managementReadback']['registryServiceId'] == contract['component']
           assert contract['managementReadback']['responseBodyPolicy'] == 'discard'
           assert contract['managementReadback']['exposesSecretValues'] is False

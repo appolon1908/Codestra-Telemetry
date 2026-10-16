@@ -50,11 +50,11 @@ jobs:
           assert contract['schemaVersion'] == '1.0.0'
           assert contract['component'] == 'opentelemetry'
           assert contract['contractId'] == 'codestra.observability.opentelemetry.v1'
-          assert contract['repository'] == 'appolon1908-hue/Codestra-Telemetry'
+          assert contract['repository'] == 'ingtrader21-spec/Codestra-Telemetry'
           assert contract['schemaAuthority'] == {
-              'repository': 'appolon1908-hue/Codestra-Telemetry',
+              'repository': 'ingtrader21-spec/Codestra-Telemetry',
               'path': 'codestra/api/service-contract.schema.json',
-              'sourceRevision': 'ed89242841ccab5b0ee0304da7ba21ba70cafc06',
+              'sourceRevision': '3517fb3b9bb1077d92419a5c13c07d703ffbebf6',
               'version': '1.0.0',
           }
           assert contract['deploymentClass'] in {'central', 'agent'}
@@ -73,7 +73,7 @@ jobs:
               assert operation['access'] == 'read_only'
               assert operation['responseBodyPolicy'] == 'discard'
           assert all(item['mutating'] is False for item in contract['integrations'])
-          assert contract['managementReadback']['controlApiOwner'] == 'appolon1908-hue/Codestra-Telemetry'
+          assert contract['managementReadback']['controlApiOwner'] == 'ingtrader21-spec/Codestra-Telemetry'
           assert contract['managementReadback']['responseBodyPolicy'] == 'discard'
           assert contract['managementReadback']['exposesSecretValues'] is False
           assert contract['managementReadback']['allowsMutation'] is False
