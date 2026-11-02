@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "policy_kind": "source_merge",
+  "repository": "appolon1908/Codestra-Telemetry",
+  "authorization_date": "2026-11-02",
+  "required_checks": [
+    {
+      "context": "frozen-vendor-documentation-source",
+      "integration_id": 15368,
+      "workflow": ".github/workflows/source-scope.yml"
+    }
+  ],
+  "replaces_contexts": [
+    "codestra-control-plane",
+    "codestra/control-plane"
+  ],
+  "preserve": [
+    "other_required_checks",
+    "review_requirements",
+    "ref_conditions",
+    "bypass_actors",
+    "enforcement",
+    "force_push_protection",
+    "deletion_protection",
+    "deployment_authority"
+  ],
+  "production_activation_authorized": false,
+  "note": "Only documentation additions outside the frozen baseline are validated. Every original vendor, config, lock and authority Git blob/mode remains immutable. This does not certify vendor code, runtime or vendor security and does not authorize deployment."
+}
