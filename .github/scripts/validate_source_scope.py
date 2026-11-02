@@ -17,6 +17,8 @@ CI_FILES = {
     '.github/scripts/validate_source_scope.py',
     '.github/scripts/test_source_scope.py',
     '.github/scripts/test_frozen_vendor.py',
+    '.github/scripts/verify_secret_findings.py',
+    '.github/scripts/test_secret_findings.py',
     '.github/source-scope.json',
     '.github/requirements-source-scope.txt',
     'governance/interim-release-policy.json',
