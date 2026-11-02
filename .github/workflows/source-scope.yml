@@ -59,9 +59,9 @@ jobs:
           tar -xzf "$archive" -C "$RUNNER_TEMP" gitleaks
           rm -f "$RUNNER_TEMP/history-findings.redacted.json" "$RUNNER_TEMP/tree-findings.redacted.json"
           set +e
-          "$RUNNER_TEMP/gitleaks" git --config "$RUNNER_TEMP/trusted-source-default.toml" --ignore-gitleaks-allow --gitleaks-ignore-path "$RUNNER_TEMP/trusted-source-empty.ignore" --no-banner --redact=100 --exit-code 1 --report-format json --report-path "$RUNNER_TEMP/history-findings.redacted.json" .
+          python .github/scripts/run_strict_scanner.py "$RUNNER_TEMP/gitleaks" git --config "$RUNNER_TEMP/trusted-source-default.toml" --ignore-gitleaks-allow --gitleaks-ignore-path "$RUNNER_TEMP/trusted-source-empty.ignore" --no-banner --redact=100 --exit-code 1 --report-format json --report-path "$RUNNER_TEMP/history-findings.redacted.json" .
           history_status=$?
-          "$RUNNER_TEMP/gitleaks" dir --config "$RUNNER_TEMP/trusted-source-default.toml" --ignore-gitleaks-allow --gitleaks-ignore-path "$RUNNER_TEMP/trusted-source-empty.ignore" --no-banner --redact=100 --exit-code 1 --report-format json --report-path "$RUNNER_TEMP/tree-findings.redacted.json" .
+          python .github/scripts/run_strict_scanner.py "$RUNNER_TEMP/gitleaks" dir --config "$RUNNER_TEMP/trusted-source-default.toml" --ignore-gitleaks-allow --gitleaks-ignore-path "$RUNNER_TEMP/trusted-source-empty.ignore" --no-banner --redact=100 --exit-code 1 --report-format json --report-path "$RUNNER_TEMP/tree-findings.redacted.json" .
           tree_status=$?
           set -e
           python - <<'PYREPORT'
