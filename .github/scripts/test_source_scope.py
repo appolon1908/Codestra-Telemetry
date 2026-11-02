@@ -127,7 +127,7 @@ class ExistingAuthorityTests(unittest.TestCase):
 
     def test_existing_import_contract_validation_stays_required(self):
         contexts = {item['context'] for item in source_policy('appolon1908/Meltano-Leads-Importer')['required_checks']}
-        self.assertEqual({'documentation-contract-source', 'validate'}, contexts)
+        self.assertEqual({'documentation-contract-source-v2', 'validate'}, contexts)
 
 
 if __name__ == '__main__':

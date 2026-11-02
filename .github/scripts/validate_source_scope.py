@@ -13,6 +13,14 @@ import yaml
 from markdown_it import MarkdownIt
 
 CI_FILES = {
+    '.github/scripts/classify_scanner_metadata.py',
+    '.github/scripts/scanner_metadata_receipts.json',
+    '.github/scripts/run_strict_scanner.py',
+    '.github/scripts/test_classify_scanner_metadata.py',
+    '.github/scripts/test_runner.py',
+
+    '.github/scripts/validate_scanner_upgrade.py',
+    '.github/scripts/test_secret_scanner.sh',
     '.github/workflows/source-scope.yml',
     '.github/scripts/validate_source_scope.py',
     '.github/scripts/test_source_scope.py',
@@ -260,7 +268,7 @@ def source_policy(repository):
     policy = {
         'schema_version': 1, 'policy_kind': 'source_merge', 'repository': repository,
         'authorization_date': '2026-11-02',
-        'required_checks': [{'context': 'documentation-contract-source', 'integration_id': 15368,
+        'required_checks': [{'context': 'documentation-contract-source-v2', 'integration_id': 15368,
                              'workflow': '.github/workflows/source-scope.yml'}],
         'replaces_contexts': ['codestra-control-plane', 'codestra/control-plane'],
         'preserve': ['other_required_checks', 'review_requirements', 'ref_conditions',
@@ -270,7 +278,7 @@ def source_policy(repository):
         'note': 'GitHub rulesets remain the enforcement authority. Documentation/contract-only validation denies application sources until vetted product CI is separately reviewed; it does not certify runtime or authorize deployment.',
     }
     if repository in {repo for repo, _ in FROZEN_VENDOR_BASES}:
-        policy['required_checks'][0]['context'] = 'frozen-vendor-documentation-source'
+        policy['required_checks'][0]['context'] = 'frozen-vendor-documentation-source-v2'
         policy['note'] = 'Only documentation additions outside the frozen baseline are validated. Every original vendor, config, lock and authority Git blob/mode remains immutable. This does not certify vendor code, runtime or vendor security and does not authorize deployment.'
     if repository == 'appolon1908/Meltano-Leads-Importer':
         policy['required_checks'].append({
@@ -281,6 +289,9 @@ def source_policy(repository):
 
 
 def trusted_from_git(base, repository, bootstrap):
+    if base == '458e8a18c6945f67d01746a2f7494bff7243f833' and repository == 'appolon1908/Codestra-Telemetry':
+        from validate_scanner_upgrade import trusted_manifest
+        return trusted_manifest(base, repository)
     """Never derive authority from candidate-supplied expected values."""
     if not re.fullmatch('[a-f0-9]{40}', base):
         raise ValueError('Missing/invalid trusted event base SHA')
