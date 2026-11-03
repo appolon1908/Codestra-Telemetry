@@ -45,5 +45,29 @@
     "private_authentication",
     "alert_delivery",
     "restore_and_rollback"
-  ]
+  ],
+  "contract_authority": {
+    "repository": "appolon1908-hue/Middleware-",
+    "path": "contracts/observability/odoo-sync.v1.json",
+    "api_owner": "appolon1908-hue/Middleware-",
+    "business_record_owner": "appolon1908-hue/Odoo"
+  },
+  "kyyow_observability_sync": {
+    "role": "telemetry-collector",
+    "middleware_write_boundary": "Middleware Odoo result worker",
+    "middleware_routes": [],
+    "direct_odoo_write": false,
+    "odoo_write_authority": "Middleware only",
+    "projection_payload_forbidden": [
+      "raw Prometheus samples",
+      "raw logs or traces",
+      "Alertmanager notification bodies",
+      "message bodies",
+      "phone numbers",
+      "email addresses",
+      "access tokens",
+      "secrets",
+      "private keys"
+    ]
+  }
 }
