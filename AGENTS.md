@@ -18,3 +18,8 @@ Before changing code:
 8. Do not cross the live-production approval boundary.
 
 The canonical protocol's no-loss, one-writer, protected-merge, checkpoint, and production-boundary rules are mandatory.
+
+<!-- CODESTRA_SINGLE_LANE_GOVERNANCE_V1 -->
+## Codestra single-lane authority
+Before any edit read .codestra/active-lane and run bash scripts/agent_preflight.sh. Work only on that branch from a clean current origin/main base. Preserve other lanes. Never weaken CI/auth/secret/route/production gates.
+<!-- /CODESTRA_SINGLE_LANE_GOVERNANCE_V1 -->
